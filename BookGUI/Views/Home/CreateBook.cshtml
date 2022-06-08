@@ -1,49 +1,89 @@
 ﻿@model BookGUI.ViewModels.Receiver
-
 @{
-    ViewData["Title"] = "CreateBook";
+    ViewData["Title"] = "Create Book";
 }
 
-<h1>CreateBook</h1>
-
-<h4>Receiver</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateBook" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Isbn" class="control-label"></label>
-                <input asp-for="Isbn" class="form-control" />
-                <span asp-validation-for="Isbn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AuthorsId" class="control-label"></label>
-                <input asp-for="AuthorsId" class="form-control" />
-                <span asp-validation-for="AuthorsId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoriesId" class="control-label"></label>
-                <input asp-for="CategoriesId" class="form-control" />
-                <span asp-validation-for="CategoriesId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+    <div class="col-lg-12">
+        <form asp-action="CreateBook" asp-controller="Home" method="post">
+            <div class="col-lg-4">
+                <div asp-validation-summary="" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Book Name</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label">Select Authors </label>
+
+                    <select asp-for="AuthorsId" class="form-control">
+                        <option value="0">--Select Authors--</option>
+                        @*@foreach (var authors in Model.Authors)
+
+                            {
+                            <option value="@authors.Id">@authors.FirstName</option>
+
+                            }*@
+                    </select>
+                    <span asp-validation-for="AuthorIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoriesSelectListItems" class="control-label">Select Category </label>
+
+                    <select asp-for="CategoriesId" class="form-control">
+                        <option value="0">--Select Category--</option>
+                       @* @foreach (var authors in Model.Categories)
+
+                            {
+                            <option value="@authors.Id">@authors.Name</option>
+
+                            }*@
+                    </select>
+                    <span asp-validation-for="CategoriesIds" class="text-danger"></span>
+                </div>
+
+                <button type="submit">Save</button>
+
+               @* <div class="form-group">
+                    <label asp-for="CUSTOMERNAME" class="control-label">Customer Name</label>
+                    <input asp-for="CUSTOMERNAME" class="form-control" />
+                    <span asp-validation-for="CUSTOMERNAME" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CONTACTPERSON" class="control-label">Contact Person</label>
+                    <input asp-for="CONTACTPERSON" class="form-control" />
+                    <span asp-validation-for="CONTACTPERSON" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ADDRESS" class="control-label">Address</label>
+                    <input asp-for="ADDRESS" class="form-control" />
+                    <span asp-validation-for="ADDRESS" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PHONE" class="control-label">Phone</label>
+                    <input asp-for="PHONE" class="form-control" />
+                    <span asp-validation-for="PHONE" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DIVISIONID" class="control-label">Select Division </label>
+
+                    <select asp-for="DIVISIONID" class="form-control" asp-items="ViewBag.ID">
+                        <option value="0">--Select Division--</option>
+                        @foreach (var hs in ViewBag.Division)
+
+                            {
+                            <option value="@hs.ID">@hs.Name</option>
+
+                            }
+                    </select>
+                    <span asp-validation-for="DIVISIONID" class="text-danger"></span>
+                </div>*@
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
